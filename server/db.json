@@ -1,0 +1,28 @@
+{
+  "characters": [
+    {
+      "id": "1",
+      "color": "#00FF00",
+      "bodyColor": "#0000FF",
+      "emotion": "crazy"
+    },
+    {
+      "id": "2",
+      "color": "#FF0000",
+      "bodyColor": "#FF00FF",
+      "emotion": "happy"
+    },
+    {
+      "id": "3",
+      "color": "#FFFF00",
+      "bodyColor": "#00FFFF",
+      "emotion": "thinking"
+    },
+    {
+      "id": "4",
+      "color": "#C0FFEE",
+      "bodyColor": "#4400AA",
+      "emotion": "flushed"
+    }
+  ]
+}
