@@ -5,10 +5,11 @@ import './App.css'
 const Character = ({color, eyeColor, emotion, size=60}) => {
   const eyeSize = size*1.6;
   const emotionSize = size*0.8;
+  const emotionDisplay = emotion == 'happy' ? '😊' : '🙂';
   return (
     <div  style={{display: 'flex', flexDirection: 'column'}}>
     <div style={{ backgroundColor: color, width: size, height: size, borderRadius: '50%' }}>
-      <div style={{fontSize: emotionSize}}> {emotion}</div>
+      <div style={{fontSize: emotionSize}}> {emotionDisplay}</div>
     </div>
 		<div style={{ backgroundColor: eyeColor, width: eyeSize, height: eyeSize, borderRadius: '50%', margin: 'auto'}}/>
     </div>
@@ -46,7 +47,7 @@ const CharacterCustomization = ({color, eyeColor, setColor, setEyeColor, emotion
 function App() {
   const [color, setColor] = useState('#00FF00');
 	const [eyeColor, setEyeColor] = useState('#0000FF');
-  const emotion = '😊';
+  const emotion = 'neutral';
   const n = 10;
   return (
     <>
