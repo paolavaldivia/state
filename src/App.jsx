@@ -1,33 +1,59 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const Character = ({color, eyeColor, emotion, size=60}) => {
+  const eyeSize = size*1.6;
+  const emotionSize = size*0.8;
+  return (
+    <div  style={{display: 'flex', flexDirection: 'column'}}>
+    <div style={{ backgroundColor: color, width: size, height: size, borderRadius: '50%' }}>
+      <div style={{fontSize: emotionSize}}> {emotion}</div>
+    </div>
+		<div style={{ backgroundColor: eyeColor, width: eyeSize, height: eyeSize, borderRadius: '50%', margin: 'auto'}}/>
+    </div>
+  );
+}
+
+const CharacterCustomization = ({color, eyeColor, setColor, setEyeColor, emotion}) => {
+	return (
+    <div  style={{display: 'flex', flexDirection: 'column', gap: 40}}>
+    <div> Choose your monster's appeareance:</div>
+		<div style={{display: 'flex', flexDirection: 'row', gap: 30}}>
+			<Character color={color} eyeColor={eyeColor} emotion={emotion} />
+      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-around'}}>
+        <div>
+        <label>
+          <input type="color" value={color} onChange={(e) => setColor(e.target.value)}/> 
+          Hair
+          </label>
+        </div>
+        <div>
+        <label>
+          <input type="color" value={eyeColor} onChange={(e) => setEyeColor(e.target.value)}/> 
+          Body
+          </label>
+        </div>
+        <div>
+        </div>
+      </div>
+		</div>
+    </div>
+	);
+};
+
+
+function App() {
+  const [color, setColor] = useState('#00FF00');
+	const [eyeColor, setEyeColor] = useState('#0000FF');
+  const emotion = '😊';
+  const n = 10;
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Statee</h1>
+      <div  style={{display: 'flex', flexDirection: 'row', gap: 30, flexWrap: 'wrap', alignContent: 'center', justifyContent: 'center'}}>
+      <CharacterCustomization color={color} eyeColor={eyeColor} setColor={setColor} setEyeColor={setEyeColor} emotion={emotion} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
